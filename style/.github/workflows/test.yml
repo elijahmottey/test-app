@@ -1,0 +1,15 @@
+name: test
+
+on:
+  push:
+   branches:
+     - master
+  workflow_dispatch:
+  
+
+jobs:
+  log_message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log a message
+        run: echo "This is a test workflow."
