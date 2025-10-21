@@ -1,18 +1,26 @@
-name: test
+name: Personal Website with S3
 
 on:
   push:
-   branches:
-     - master
+    branches:
+      - master
   workflow_dispatch:
-  
 
 jobs:
   successful-push:
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: successful step
-        run: echo "This is a test workflow."
+      - name: Setup AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: List AWS S3 buckets
+        run: |
+          echo "Listing all S3 buckets..."
+          aws s3 ls
