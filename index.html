@@ -47,6 +47,14 @@
 
       section {
         padding: 4rem 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       h1, h2, h3 {
@@ -143,6 +151,13 @@
         border: 5px solid rgba(255, 255, 255, 0.2);
         margin-bottom: 1.5rem;
         box-shadow: var(--shadow);
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
       }
 
       header h1 {
@@ -335,6 +350,14 @@
         display: flex;
         flex-direction: column;
         height: 100%;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .project-card.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
       }
 
       .project-card:hover {
@@ -470,6 +493,22 @@
         color: var(--text-color);
         font-weight: 500;
         font-size: 0.95rem;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
       }
 
       .nav-links a:hover {
@@ -517,12 +556,6 @@
       @media (min-width: 1200px) {
         .container {
           padding: 0 40px;
-        }
-        .mobile-menu-btn{
-            display: hidden;
-        }
-        section {
-          padding: 5rem 0;
         }
       }
 
@@ -763,7 +796,7 @@
           <img src="image/elijah.jpg" alt="Elijah Mottey" class="profile-pic" />
           <h1>👋 Hi there! I'm Elijah Mottey</h1>
           <p class="tagline">
-            Software Engineer | Full-Stack Developer | Cloud Enthusiast
+            Software Engineer | Cloud Enthusiast
           </p>
         </div>
 
@@ -854,6 +887,7 @@
               <ul>
                 <li><i class="fab fa-git-alt"></i> Git</li>
                 <li><i class="fas fa-code"></i> VS Code</li>
+                <li><i class="fab fa-jetbrains"></i> IntelliJ</li>
                 <li><i class="fas fa-cube"></i> Postman</li>
                 <li><i class="fab fa-figma"></i> Figma</li>
                 <li><i class="fas fa-paint-brush"></i> Adobe Photoshop</li>
@@ -876,6 +910,8 @@
                   <li>Developed and deployed web-based systems for the School of Pharmacy</li>
                   <li>Built an online suggestion box using Spring Boot and Next.js</li>
                   <li>Collaborated with stakeholders to gather requirements and implement solutions</li>
+                  <li>Assisted in managing and updating the school's website</li>
+                  <li>Designed promotional materials and fixed network and software problems</li>
                 </ul>
               </div>
             </div>
@@ -888,6 +924,8 @@
                   <li>Collaborated on building internal management tools</li>
                   <li>Automated data workflows to improve efficiency</li>
                   <li>Participated in code reviews and team meetings</li>
+                  <li>Created designs using Photoshop and developed templates</li>
+                  <li>Addressed technical issues with machines and gained experience with various digital tools</li>
                 </ul>
               </div>
             </div>
@@ -900,6 +938,26 @@
         <div class="container">
           <h2 class="section-title">🚀 Featured Projects</h2>
           <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-img">
+                <i class="fas fa-hotel fa-3x"></i>
+              </div>
+              <div class="project-content">
+                <h3>Hotel Management System</h3>
+                <p>A comprehensive hotel management solution for room bookings, guest management, billing, and reporting.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Spring Boot</span>
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                  <span class="tech-tag">Docker</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="btn btn-outline">View Demo</a>
+                  <a href="#" class="btn">Source Code</a>
+                </div>
+              </div>
+            </div>
+            
             <div class="project-card">
               <div class="project-img">
                 <i class="fas fa-shopping-cart fa-3x"></i>
@@ -933,7 +991,27 @@
                   <span class="tech-tag">Axios</span>
                 </div>
                 <div class="project-links">
-                  <a href="#" class="btn btn-outline">View Demo</a>
+                  <a href="https://suggestions-ebon.vercel.app/" class="btn btn-outline">View Demo</a>
+                  <a href="#" class="btn">Source Code</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="project-card">
+              <div class="project-img">
+                <i class="fas fa-brain fa-3x"></i>
+              </div>
+              <div class="project-content">
+                <h3>Harmony Haven App</h3>
+                <p>Full-stack mental health application with AI integration, community features, and third-party authentication.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Next.js</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">Spring Boot</span>
+                  <span class="tech-tag">ChatGPT API</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://harmony-haven-app.vercel.app/" class="btn btn-outline">View Demo</a>
                   <a href="#" class="btn">Source Code</a>
                 </div>
               </div>
@@ -950,6 +1028,26 @@
                   <span class="tech-tag">Next.js</span>
                   <span class="tech-tag">TypeScript</span>
                   <span class="tech-tag">Spring Boot</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="btn btn-outline">View Demo</a>
+                  <a href="#" class="btn">Source Code</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="project-card">
+              <div class="project-img">
+                <i class="fas fa-sticky-note fa-3x"></i>
+              </div>
+              <div class="project-content">
+                <h3>Note Taking App</h3>
+                <p>A responsive note-taking application with rich text editing, categorization, and search functionality.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">MongoDB</span>
+                  <span class="tech-tag">Express</span>
                 </div>
                 <div class="project-links">
                   <a href="#" class="btn btn-outline">View Demo</a>
@@ -1117,6 +1215,35 @@
           icon.classList.remove('fa-times');
           icon.classList.add('fa-bars');
         }
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Animate project cards with staggered delay
+            if (entry.target.id === 'projects') {
+              const projectCards = entry.target.querySelectorAll('.project-card');
+              projectCards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.classList.add('animate');
+                }, index * 200);
+              });
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
       });
     </script>
   </body>
