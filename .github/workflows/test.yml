@@ -11,20 +11,30 @@ permissions:
   contents: read
 
 jobs:
-  successful-push:
+  deploy:
+    name: Deploy Website to S3
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup AWS credentials
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: List AWS S3 buckets
+      - name: Sync website files to S3
         run: |
-          echo "Listing all S3 buckets..."
-          aws s3 ls
+          echo "Deploying website files to S3..."
+          aws s3 sync ./ s3://${{ secrets.S3_BUCKET_NAME }} \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "README.md" \
+            --delete
+
+      - name: Set S3 website permissions
+        run: |
+          echo "Setting public-read ACL (optional if CloudFront used)..."
+          aws s3 website s3://${{ secrets.S3_BUCKET_NAME }} --index-document index.html --error-document index.html
