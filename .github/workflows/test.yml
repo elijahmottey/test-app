@@ -38,3 +38,6 @@ jobs:
         run: |
           echo "Setting public-read ACL (optional if CloudFront used)..."
           aws s3 website s3://${{ secrets.S3_BUCKET_NAME }} --index-document index.html --error-document index.html
+
+      - name: Success pushing to AWS
+        run: echo "Update successful 🎉"
