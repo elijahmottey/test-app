@@ -8,3 +8,7 @@ resource "aws_s3_bucket" "static-site" {
   }
   
 }
+
+resource "random_id" "suffix" {
+  byte_length = 4
+}
