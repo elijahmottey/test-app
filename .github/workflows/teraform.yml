@@ -47,6 +47,15 @@ jobs:
         run: terraform apply -auto-approve -var="bucket_name=${TR_VAR_BUCKET_NAME}"
         working-directory: terraform
 
+      - name: Sync website files to S3
+        run: |
+          echo "Deploying website files to S3..."
+          aws s3 sync ./ s3://${{ secrets.BUCKET_NAME_TR }} \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "README.md" \
+            --delete
+
 
       - name: Success pushing to AWS
         run: echo "Update successful 🎉"
