@@ -1,0 +1,52 @@
+name: creating s3 bucket using terraform
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: run os ubuntu latest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: install terraform
+        uses: hashicorp/setup-terraform@v2
+    
+
+      - name: run terraform init
+        run: terraform init
+        working-directory: terraform
+
+      - name: run terraform plan
+        env:
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
+        run: |
+          terraform plan -var="bucket_name=${BUCKET_NAME}"
+        working-directory: terraform
+
+      - name: run terraform apply
+        env:
+          TR_VAR_BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
+        run: terraform apply -auto-approve -var="bucket_name=${TR_VAR_BUCKET_NAME}"
+        working-directory: terraform
+
+
+      - name: Success pushing to AWS
+        run: echo "Update successful 🎉"
