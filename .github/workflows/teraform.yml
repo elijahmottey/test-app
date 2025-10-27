@@ -59,3 +59,14 @@ jobs:
 
       - name: Success pushing to AWS
         run: echo "Update successful 🎉"
+
+
+        
+      - name: run terraform destroy
+        env:
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
+        run: terraform destroy -auto-approve -var="bucket_name=${BUCKET_NAME}"
+        working-directory: terraform
+
+      - name: Success destroying AWS resources
+        run: echo "Destroy successful 🎉"
