@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket" "static-site" {
-    bucket = var.bucket-name
+    bucket = var.bucket_name
 
     
   tags = {
