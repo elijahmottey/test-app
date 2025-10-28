@@ -33,7 +33,7 @@ jobs:
           terraform init \
             -backend-config="bucket=${{ secrets.LOCK_BUCKET }}" \
             -backend-config="region=${{ secrets.AWS_REGION }}" \
-            -backend-config="key=terraform/state/terraform.tfstate" \
+            -backend-config="key=terraform/state1/terraform.tfstate" \
             -backend-config="encrypt=true" \
             -backend-config="dynamodb_table=${{ secrets.DYNAMO_TABLE }}"
         working-directory: terraform
