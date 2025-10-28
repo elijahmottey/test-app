@@ -1,5 +1,5 @@
 provider "aws" {
-    region = "us-east-1"
+    region = "${var.region}"
   
 }
 
@@ -7,11 +7,11 @@ terraform {
 
   backend "s3" {
 
-  bucket = "terraform-gitaction-v1"
-  region = "us-east-1"
+  bucket = "${var.lock_bucket_name}"
+  region = "${var.region}"
   key    = "lock/terraform.tfid/terraform.tfstate"
   encrypt = true
-  dynamodb_table = "tr-gha-resources"
+  dynamodb_table = "${var.dynamodb_table_name}"
 
 }
 
