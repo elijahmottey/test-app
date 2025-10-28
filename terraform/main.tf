@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket" "static-site" {
-  bucket = "${var.bucket_name}-${random_id.suffix.hex}"
+  bucket = "${var.bucket_name}"
     
   tags = {
     Name        = "StaticSiteBucket"
@@ -9,9 +9,6 @@ resource "aws_s3_bucket" "static-site" {
   
 }
 
-resource "random_id" "suffix" {
-  byte_length = 4
-}
 
 resource "aws_s3_bucket_website_configuration" "static-site-website" {
   bucket = aws_s3_bucket.static-site.id
