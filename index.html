@@ -26,6 +26,21 @@
         --glass-border: rgba(255, 255, 255, 0.18);
       }
 
+      /* Dark mode variables */
+      .dark-mode {
+        --primary-color: #818cf8;
+        --secondary-color: #6366f1;
+        --accent-color: #a78bfa;
+        --text-color: #f9fafb;
+        --light-color: #1f2937;
+        --dark-color: #f9fafb;
+        --gray-color: #d1d5db;
+        --card-bg: rgba(31, 41, 55, 0.95);
+        --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        --glass-bg: rgba(31, 41, 55, 0.25);
+        --glass-border: rgba(31, 41, 55, 0.18);
+      }
+
       /* Base Styles */
       * {
         margin: 0;
@@ -45,10 +60,23 @@
         background: linear-gradient(135deg, #f0f4ff 0%, #fdf2f8 100%);
         overflow-x: hidden;
         min-height: 100vh;
+        transition: background 0.5s ease;
+      }
+
+      .dark-mode body {
+        background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
       }
 
       .mobile-menu{
         display:none;
+      }
+
+      .changeColor{
+        color: white;
+      }
+
+      .dark-mode .changeColor {
+        color: var(--text-color);
       }
 
       .container {
@@ -64,12 +92,12 @@
       h1, h2, h3 {
         margin-bottom: 1rem;
         color: var(--dark-color);
-        font-weight: 600;
+        font-weight: 300;
         font-family: 'Space Grotesk', sans-serif;
       }
 
       h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-size: clamp(2.5rem, 3vw, 4rem);
         line-height: 1.1;
       }
 
@@ -77,7 +105,7 @@
         font-size: clamp(2rem, 4vw, 3rem);
         position: relative;
         display: inline-block;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
       }
 
       h2::after {
@@ -92,12 +120,12 @@
       }
 
       h3 {
-        font-size: 1.5rem;
+        font-size: 1.0rem;
       }
 
       p {
         margin-bottom: 1rem;
-        font-weight: 400;
+        font-weight: 200;
         color: var(--gray-color);
       }
 
@@ -190,6 +218,10 @@
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
       }
 
+      .dark-mode header {
+        background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(55, 65, 81, 0.9) 100%);
+      }
+
       header::before {
         content: '';
         position: absolute;
@@ -272,6 +304,10 @@
         padding: 0 1rem;
         font-size: 1.2rem;
         color: white;
+      }
+
+      .dark-mode .contact-info p {
+        color: var(--text-color);
       }
 
       .social-links {
@@ -405,7 +441,7 @@
         height: 20px;
         border-radius: 50%;
         background-color: var(--primary-color);
-        border: 5px solid white;
+        border: 5px solid var(--card-bg);
         box-shadow: 0 0 0 3px var(--primary-color);
       }
 
@@ -560,6 +596,10 @@
         font-family: 'Space Grotesk', sans-serif;
       }
 
+      .dark-mode .tech-tag {
+        background: rgba(129, 140, 248, 0.2);
+      }
+
       .project-links {
         display: flex;
         gap: 10px;
@@ -594,7 +634,7 @@
       }
 
       .modal-content {
-        background: white;
+        background: var(--card-bg);
         max-width: 1200px;
         margin: 2rem auto;
         border-radius: var(--border-radius);
@@ -702,6 +742,10 @@
         background: rgba(99, 102, 241, 0.05);
       }
 
+      .dark-mode .hobby-item:hover {
+        background: rgba(129, 140, 248, 0.1);
+      }
+
       .hobby-item i {
         font-size: 2rem;
         color: var(--primary-color);
@@ -720,6 +764,10 @@
         position: relative;
         overflow: hidden;
         clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+      }
+
+      .dark-mode footer {
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
       }
 
       footer::before {
@@ -835,6 +883,11 @@
         transition: var(--transition);
       }
 
+      .dark-mode nav {
+        background: rgba(31, 41, 55, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
       .nav-container {
         display: flex;
         justify-content: space-between;
@@ -848,7 +901,7 @@
         font-family: 'Space Grotesk', sans-serif;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 8px; 
       }
 
       .logo-liv {
@@ -856,7 +909,7 @@
         color: white;
         width: 40px;
         height: 40px;
-        border-radius: 8px;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -914,6 +967,25 @@
         z-index: 1001;
       }
 
+      .theme-toggle {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: var(--text-color);
+        transition: var(--transition);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .theme-toggle:hover {
+        background: rgba(99, 102, 241, 0.1);
+      }
+
       /* Back to top button */
       .back-to-top {
         position: fixed;
@@ -945,6 +1017,76 @@
         background: var(--secondary-color);
       }
 
+      /* Loading animation */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+
+      .loading-screen.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .loader {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 20px;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .loading-text {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      /* Particle background */
+      .particles-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      /* Progress bar */
+      .progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: transparent;
+        z-index: 1001;
+      }
+
+      .progress-bar {
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+
       /* Responsive Design */
       @media (max-width: 992px) {
         .projects-scroll {
@@ -972,11 +1114,10 @@
 
         .mobile-menu {
           position: fixed;
-
           top: 70px;
           left: 0;
           width: 100%;
-          background: white;
+          background: var(--card-bg);
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
           padding: 2rem;
           display: flex;
@@ -1001,6 +1142,7 @@
           border-bottom: 1px solid rgba(0, 0, 0, 0.1);
           font-weight: 500;
           font-size: 1.1rem;
+          color: var(--text-color);
         }
 
         .mobile-menu a:last-child {
@@ -1139,6 +1281,20 @@
     </style>
   </head>
   <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loader"></div>
+      <div class="loading-text">Loading Portfolio...</div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Particles Background -->
+    <div class="particles-container" id="particlesContainer"></div>
+
     <!-- Navigation -->
     <nav>
       <div class="container nav-container">
@@ -1154,9 +1310,14 @@
           <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
           <a href="#research"><i class="fas fa-search"></i> Research</a>
         </div>
-        <button class="mobile-menu-btn" aria-label="Toggle menu">
-          <i class="fas fa-bars"></i>
-        </button>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
       </div>
       <div class="mobile-menu">
         <a href="#home"><i class="fas fa-home"></i> Home</a>
@@ -1175,17 +1336,17 @@
           <img src="image/elijah.jpg" alt="Elijah Mottey" class="profile-pic" />
           <h1>Elijah Mottey</h1>
           <div class="typewriter-container">
-            <p class="tagline typewriter">Software Developer & Cloud Engineer</p>
+            <p class="tagline typewriter changeColor">Software Developer & Cloud Engineer</p>
           </div>
-          <p class="tagline">Building innovative solutions with modern technologies and cloud infrastructure</p>
+          <p class="tagline changeColor ">Building innovative solutions with modern technologies and cloud infrastructure</p>
         </div>
 
         <div class="contact-info">
           <p>
             📫 Let's Connect:
-            <a href="mailto:elijahmottey5@gmail.com" class="email">elijahmottey5@gmail.com</a>
+            <a href="mailto:elijahmottey5@gmail.com" class="email changeColor">elijahmottey5@gmail.com</a>
           </p>
-          <div class="social-links">
+          <div class="social-links ">
             <a href="https://www.linkedin.com/in/elijah-mottey" target="_blank" aria-label="LinkedIn">
               <i class="fab fa-linkedin-in"></i>
             </a>
@@ -1271,7 +1432,6 @@
                 <li><i class="fas fa-code"></i> VS Code</li>
                 <li><i class="fab fa-jetbrains"></i> IntelliJ</li>
                 <li><i class="fas fa-cube"></i> Postman</li>
-                <li><i class="fab fa-figma"></i> Figma</li>
                 <li><i class="fas fa-paint-brush"></i> Adobe Photoshop</li>
               </ul>
             </div>
@@ -1568,6 +1728,13 @@
     </div>
 
     <script>
+      // Loading Screen
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('loadingScreen').classList.add('hidden');
+        }, 1500);
+      });
+
       // Mobile Menu Toggle
       const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
       const mobileMenu = document.querySelector('.mobile-menu');
@@ -1850,6 +2017,91 @@
       // Pause auto-scroll on touch
       projectsScroll.addEventListener('touchstart', stopAutoScroll);
       projectsScroll.addEventListener('touchend', startAutoScroll);
+
+      // Dark Mode Toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = themeToggle.querySelector('i');
+      
+      // Check for saved theme preference or respect OS preference
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      const currentTheme = localStorage.getItem('theme');
+      
+      if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode')) {
+          localStorage.setItem('theme', 'dark');
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+        } else {
+          localStorage.setItem('theme', 'light');
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+        }
+      });
+
+      // Progress Bar
+      window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progressBar').style.width = scrolled + '%';
+      });
+
+      // Particle Background
+      function createParticles() {
+        const container = document.getElementById('particlesContainer');
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.style.position = 'absolute';
+          particle.style.width = Math.random() * 5 + 2 + 'px';
+          particle.style.height = particle.style.width;
+          particle.style.background = 'rgba(99, 102, 241, 0.5)';
+          particle.style.borderRadius = '50%';
+          particle.style.top = Math.random() * 100 + 'vh';
+          particle.style.left = Math.random() * 100 + 'vw';
+          particle.style.opacity = Math.random() * 0.5 + 0.2;
+          
+          container.appendChild(particle);
+          
+          // Animate particles
+          animateParticle(particle);
+        }
+      }
+      
+      function animateParticle(particle) {
+        let x = parseFloat(particle.style.left);
+        let y = parseFloat(particle.style.top);
+        let xSpeed = (Math.random() - 0.5) * 0.5;
+        let ySpeed = (Math.random() - 0.5) * 0.5;
+        
+        function move() {
+          x += xSpeed;
+          y += ySpeed;
+          
+          // Bounce off edges
+          if (x <= 0 || x >= 100) xSpeed *= -1;
+          if (y <= 0 || y >= 100) ySpeed *= -1;
+          
+          particle.style.left = x + 'vw';
+          particle.style.top = y + 'vh';
+          
+          requestAnimationFrame(move);
+        }
+        
+        move();
+      }
+      
+      // Initialize particles
+      createParticles();
     </script>
   </body>
 </html>
