@@ -19,33 +19,55 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: install terraform
+      - name: Install Terraform
         uses: hashicorp/setup-terraform@v2
-    
 
-      - name: run terraform init
+      - name: Terraform Init
         run: terraform init
         working-directory: terraform
 
-      - name: run terraform plan
-        env:
-          BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
-        run: |
-          terraform plan -var="bucket_name=${BUCKET_NAME}"
+      - name: Validate Terraform
+        run: terraform validate
         working-directory: terraform
 
-      - name: run terraform apply
+      - name: Terraform Plan
+        env: 
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          LOCK_BUCKET: ${{ secrets.LOCK_BUCKET }}
+          DYNAMO_TABLE: ${{ secrets.DYNAMO_TABLE }}
+        run: |
+          terraform plan \
+            -var="bucket_name=${BUCKET_NAME}" \
+            -var="aws_region=${AWS_REGION}" \
+            -var="lock_bucket=${LOCK_BUCKET}" \
+            -var="dynamo_table=${DYNAMO_TABLE}"
+        working-directory: terraform
+
+      - name: Terraform Apply
         env:
           TR_VAR_BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
-        run: terraform apply -auto-approve -var="bucket_name=${TR_VAR_BUCKET_NAME}"
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          LOCK_BUCKET: ${{ secrets.LOCK_BUCKET }}
+          DYNAMO_TABLE: ${{ secrets.DYNAMO_TABLE }}
+        run: |
+          terraform apply -auto-approve \
+            -var="bucket_name=${TR_VAR_BUCKET_NAME}" \
+            -var="aws_region=${AWS_REGION}" \
+            -var="lock_bucket=${LOCK_BUCKET}" \
+            -var="dynamo_table=${DYNAMO_TABLE}"
         working-directory: terraform
+
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
 
       - name: Sync website files to S3
         run: |
@@ -54,14 +76,11 @@ jobs:
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude "README.md" \
+            --exclude "terraform/*" \
             --delete
 
+      - name: Deployment Completed
+        run: echo "S3 Bucket successfully created and website deployed 🎉"
 
       - name: Success pushing to AWS
         run: echo "Update successful 🎉"
-
-
-        
-
-      - name: Success destroying AWS resources
-        run: echo "Destroy successful 🎉"
