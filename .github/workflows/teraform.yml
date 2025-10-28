@@ -1,4 +1,4 @@
-name: creating s3 bucket using terraform
+name: Creating S3 bucket using Terraform
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   deploy:
-    name: run os ubuntu latest
+    name: Run on Ubuntu latest
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +29,13 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
-        run: terraform init
+        run: |
+          terraform init \
+            -backend-config="bucket=${{ secrets.LOCK_BUCKET }}" \
+            -backend-config="region=${{ secrets.AWS_REGION }}" \
+            -backend-config="key=terraform/state/terraform.tfstate" \
+            -backend-config="encrypt=true" \
+            -backend-config="dynamodb_table=${{ secrets.DYNAMO_TABLE }}"
         working-directory: terraform
 
       - name: Validate Terraform
@@ -37,36 +43,28 @@ jobs:
         working-directory: terraform
 
       - name: Terraform Plan
-        env: 
+        env:
           BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          LOCK_BUCKET: ${{ secrets.LOCK_BUCKET }}
-          DYNAMO_TABLE: ${{ secrets.DYNAMO_TABLE }}
+         
         run: |
           terraform plan \
-            -var="bucket_name=${BUCKET_NAME}" \
-            -var="aws_region=${AWS_REGION}" \
-            -var="lock_bucket=${LOCK_BUCKET}" \
-            -var="dynamo_table=${DYNAMO_TABLE}"
+            -var="bucket_name=${BUCKET_NAME}" 
+           
         working-directory: terraform
 
       - name: Terraform Apply
         env:
           TR_VAR_BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          LOCK_BUCKET: ${{ secrets.LOCK_BUCKET }}
-          DYNAMO_TABLE: ${{ secrets.DYNAMO_TABLE }}
+        
         run: |
           terraform apply -auto-approve \
-            -var="bucket_name=${TR_VAR_BUCKET_NAME}" \
-            -var="aws_region=${AWS_REGION}" \
-            -var="lock_bucket=${LOCK_BUCKET}" \
-            -var="dynamo_table=${DYNAMO_TABLE}"
+            -var="bucket_name=${TR_VAR_BUCKET_NAME}" 
+           
         working-directory: terraform
 
       - name: Install AWS CLI
         run: |
-          sudo apt-get update
+          sudo apt-get update -y
           sudo apt-get install -y awscli
 
       - name: Sync website files to S3
@@ -80,7 +78,4 @@ jobs:
             --delete
 
       - name: Deployment Completed
-        run: echo "S3 Bucket successfully created and website deployed 🎉"
-
-      - name: Success pushing to AWS
-        run: echo "Update successful 🎉"
+        run: echo "✅ S3 Bucket successfully created and website deployed 🎉"
