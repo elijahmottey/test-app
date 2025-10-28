@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elijah Mottey - Software Engineer & Cloud Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
       /* CSS Variables for consistent theming */
@@ -39,7 +42,7 @@
       }
 
       body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
         color: var(--text-color);
         background-color: var(--light-color);
@@ -53,7 +56,7 @@
       }
 
       section {
-        padding: 4rem 0;
+        padding: 3rem 0;
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.6s ease, transform 0.6s ease;
@@ -67,6 +70,7 @@
       h1, h2, h3 {
         margin-bottom: 1rem;
         color: var(--dark-color);
+        font-weight: 600;
       }
 
       h2 {
@@ -89,6 +93,7 @@
 
       p {
         margin-bottom: 1rem;
+        font-weight: 400;
       }
 
       ul {
@@ -109,14 +114,14 @@
         display: inline-block;
         background-color: var(--primary-color);
         color: white;
-        padding: 0.75rem 1.5rem;
+        padding: 0.6rem 1.2rem;
         border-radius: 5px;
-        font-weight: 600;
+        font-weight: 500;
         transition: var(--transition);
         border: none;
         cursor: pointer;
         box-shadow: var(--shadow);
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         text-align: center;
       }
 
@@ -137,36 +142,34 @@
         color: white;
       }
 
-      /* Enhanced Code Background */
-      .code-background {
-        position: fixed;
+      /* Code Background - Only in Header */
+      .header-code-background {
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         z-index: -1;
         overflow: hidden;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        opacity: 0.7;
       }
 
       .code-line {
         position: absolute;
         font-family: 'Courier New', monospace;
-        font-size: 14px;
-        color: rgba(59, 130, 246, 0.7);
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
         white-space: nowrap;
         animation: codeFlow 25s linear infinite;
-        text-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
       }
 
       .code-line:nth-child(2n) {
-        color: rgba(139, 92, 246, 0.7);
-        text-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+        color: rgba(200, 200, 255, 0.8);
       }
 
       .code-line:nth-child(3n) {
-        color: rgba(16, 185, 129, 0.7);
-        text-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+        color: rgba(220, 255, 220, 0.8);
       }
 
       @keyframes codeFlow {
@@ -217,9 +220,9 @@
 
       /* Enhanced Header Styles */
       header {
-        background: linear-gradient(135deg, rgba(37, 99, 235, 0.85), rgba(30, 64, 175, 0.85));
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.9));
         color: white;
-        padding: 8rem 0 5rem;
+        padding: 6rem 0 4rem;
         text-align: center;
         margin-top: 70px;
         position: relative;
@@ -238,31 +241,31 @@
       }
 
       .profile {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
       }
 
       .profile-pic {
-        width: 180px;
-        height: 180px;
+        width: 140px;
+        height: 140px;
         border-radius: 50%;
         object-fit: cover;
-        border: 5px solid rgba(255, 255, 255, 0.3);
-        margin-bottom: 1.5rem;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        margin-bottom: 1.2rem;
         box-shadow: var(--shadow);
         animation: float 3s ease-in-out infinite;
       }
 
       @keyframes float {
         0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        50% { transform: translateY(-8px); }
         100% { transform: translateY(0px); }
       }
 
       header h1 {
-        font-size: clamp(2rem, 6vw, 3rem);
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
         margin-bottom: 0.5rem;
         color: white;
-        font-weight: 700;
+        font-weight: 600;
       }
 
       .typewriter-container {
@@ -277,7 +280,7 @@
         margin: 0 auto;
         letter-spacing: 0.05em;
         animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
         font-weight: 500;
       }
 
@@ -292,32 +295,33 @@
       }
 
       .tagline {
-        font-size: clamp(1rem, 3vw, 1.2rem);
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         opacity: 0.9;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
         padding: 0 1rem;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+        font-weight: 400;
       }
 
       .contact-info {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1.5rem;
+        gap: 1.2rem;
       }
 
       .contact-info p {
         margin-bottom: 0;
         text-align: center;
         padding: 0 1rem;
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       .social-links {
         display: flex;
-        gap: 15px;
+        gap: 12px;
         margin-top: 10px;
         flex-wrap: wrap;
         justify-content: center;
@@ -327,23 +331,23 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
-        height: 50px;
+        width: 42px;
+        height: 42px;
         background-color: rgba(255, 255, 255, 0.15);
         border-radius: 50%;
         color: white;
         transition: var(--transition);
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .social-links a:hover {
         background-color: rgba(255, 255, 255, 0.25);
-        transform: translateY(-5px) scale(1.1);
+        transform: translateY(-3px) scale(1.05);
       }
 
       .header-btns {
         display: flex;
-        gap: 1rem;
+        gap: 0.8rem;
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 1rem;
@@ -356,18 +360,18 @@
 
       .section-title {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
       }
 
       .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
       }
 
       .skill-category {
         background-color: white;
-        padding: 1.5rem;
+        padding: 1.2rem;
         border-radius: 8px;
         box-shadow: var(--shadow);
         transition: var(--transition);
@@ -375,31 +379,34 @@
       }
 
       .skill-category:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
       }
 
       .skill-category h3 {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 1rem;
+        gap: 8px;
+        margin-bottom: 0.8rem;
         color: var(--primary-color);
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
       }
 
       .skill-category ul li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 0.95rem;
+        gap: 8px;
+        font-size: 0.9rem;
+        font-weight: 400;
       }
 
       .skill-category ul li i {
         color: var(--primary-color);
-        width: 20px;
+        width: 16px;
         text-align: center;
+        font-size: 0.9rem;
       }
 
       /* Experience & Education */
@@ -415,14 +422,14 @@
         left: 20px;
         top: 0;
         bottom: 0;
-        width: 4px;
+        width: 3px;
         background-color: var(--primary-color);
       }
 
       .timeline-item {
         position: relative;
-        margin-bottom: 2rem;
-        padding-left: 60px;
+        margin-bottom: 1.5rem;
+        padding-left: 50px;
       }
 
       .timeline-item::before {
@@ -430,31 +437,32 @@
         position: absolute;
         left: 12px;
         top: 5px;
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         border-radius: 50%;
         background-color: var(--primary-color);
-        border: 4px solid white;
+        border: 3px solid white;
         box-shadow: 0 0 0 2px var(--primary-color);
       }
 
       .timeline-content {
         background-color: white;
-        padding: 1.5rem;
+        padding: 1.2rem;
         border-radius: 8px;
         box-shadow: var(--shadow);
       }
 
       .timeline-content h3 {
         color: var(--primary-color);
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        font-weight: 600;
       }
 
       .timeline-content .date {
         color: var(--gray-color);
-        font-weight: 600;
+        font-weight: 500;
         margin-bottom: 0.5rem;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
 
       .timeline-content ul {
@@ -462,9 +470,11 @@
       }
 
       .timeline-content ul li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
         position: relative;
         padding-left: 1rem;
+        font-size: 0.9rem;
+        font-weight: 400;
       }
 
       .timeline-content ul li::before {
@@ -483,7 +493,7 @@
 
       .projects-scroll {
         display: flex;
-        gap: 1.5rem;
+        gap: 1.2rem;
         animation: scrollProjects 40s linear infinite;
         width: max-content;
       }
@@ -503,7 +513,7 @@
 
       .projects-grid {
         display: flex;
-        gap: 1.5rem;
+        gap: 1.2rem;
       }
 
       .mobile-menu {
@@ -527,8 +537,8 @@
         height: 100%;
         opacity: 0;
         transform: translateY(20px);
-        min-width: 300px;
-        max-width: 350px;
+        min-width: 260px;
+        max-width: 300px;
         border-top: 4px solid var(--primary-color);
       }
 
@@ -539,22 +549,22 @@
       }
 
       .project-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
       }
 
       .project-img {
-        height: 180px;
+        height: 140px;
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 3rem;
+        font-size: 2.2rem;
       }
 
       .project-content {
-        padding: 1.5rem;
+        padding: 1.2rem;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -562,41 +572,52 @@
 
       .project-content h3 {
         color: var(--primary-color);
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-content p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+        font-weight: 400;
       }
 
       .project-tech {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin: 1rem 0;
+        gap: 6px;
+        margin: 0.8rem 0;
       }
 
       .tech-tag {
         background-color: #e0f2fe;
         color: var(--primary-color);
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 16px;
+        font-size: 0.75rem;
+        font-weight: 500;
       }
 
       .project-links {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         margin-top: auto;
         flex-wrap: wrap;
       }
 
       .project-links .btn {
         flex: 1;
-        min-width: 120px;
+        min-width: 100px;
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
       }
 
       /* Research & Hobbies */
       .research-list li, .hobbies-content {
         background-color: white;
-        padding: 1.5rem;
+        padding: 1.2rem;
         border-radius: 8px;
         box-shadow: var(--shadow);
         margin-bottom: 1rem;
@@ -604,7 +625,7 @@
       }
 
       .research-list li:hover {
-        transform: translateY(-5px);
+        transform: translateY(-3px);
       }
 
       .hobbies-content {
@@ -614,8 +635,8 @@
       .hobbies-icons {
         display: flex;
         justify-content: center;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
+        gap: 1.2rem;
+        margin-top: 1.2rem;
         flex-wrap: wrap;
       }
 
@@ -623,29 +644,30 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-        min-width: 80px;
+        gap: 8px;
+        min-width: 70px;
         transition: var(--transition);
       }
 
       .hobby-item:hover {
-        transform: translateY(-5px);
+        transform: translateY(-3px);
       }
 
       .hobby-item i {
-        font-size: 2rem;
+        font-size: 1.8rem;
         color: var(--primary-color);
       }
 
       .hobby-item span {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        font-weight: 500;
       }
 
       /* Enhanced Footer */
       footer {
         background-color: var(--dark-color);
         color: white;
-        padding: 3rem 0 2rem;
+        padding: 2.5rem 0 1.5rem;
         position: relative;
         overflow: hidden;
       }
@@ -663,77 +685,83 @@
 
       .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
         position: relative;
         z-index: 1;
       }
 
       .footer-section h3 {
         color: white;
-        margin-bottom: 1.5rem;
-        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
         position: relative;
+        font-weight: 600;
       }
 
       .footer-section h3::after {
         content: '';
         position: absolute;
-        bottom: -8px;
+        bottom: -6px;
         left: 0;
-        width: 40px;
-        height: 3px;
+        width: 35px;
+        height: 2px;
         background-color: var(--primary-color);
       }
 
       .footer-section p {
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem;
         opacity: 0.8;
+        font-size: 0.9rem;
+        font-weight: 400;
       }
 
       .footer-links {
         display: flex;
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 0.6rem;
       }
 
       .footer-links a {
         color: rgba(255, 255, 255, 0.8);
         transition: var(--transition);
+        font-size: 0.9rem;
+        font-weight: 400;
       }
 
       .footer-links a:hover {
         color: white;
-        transform: translateX(5px);
+        transform: translateX(3px);
       }
 
       .footer-social {
         display: flex;
-        gap: 1rem;
-        margin-top: 1rem;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
       }
 
       .footer-social a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         color: white;
         transition: var(--transition);
+        font-size: 1rem;
       }
 
       .footer-social a:hover {
         background-color: var(--primary-color);
-        transform: translateY(-3px);
+        transform: translateY(-2px);
       }
 
       .footer-bottom {
         text-align: center;
-        padding-top: 2rem;
+        padding-top: 1.5rem;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         position: relative;
         z-index: 1;
@@ -742,6 +770,8 @@
       .footer-bottom p {
         margin-bottom: 0;
         opacity: 0.7;
+        font-size: 0.85rem;
+        font-weight: 400;
       }
 
       /* Navigation */
@@ -753,7 +783,7 @@
         background-color: rgba(255, 255, 255, 0.95);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         z-index: 1000;
-        padding: 1rem 0;
+        padding: 0.8rem 0;
         backdrop-filter: blur(10px);
         transition: var(--transition);
       }
@@ -765,20 +795,20 @@
       }
 
       .logo {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 700;
         color: var(--primary-color);
       }
 
       .nav-links {
         display: flex;
-        gap: 1.5rem;
+        gap: 1.2rem;
       }
 
       .nav-links a {
         color: var(--text-color);
         font-weight: 500;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         position: relative;
       }
 
@@ -805,7 +835,7 @@
         display: none;
         background: none;
         border: none;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         cursor: pointer;
         color: var(--text-color);
         z-index: 1001;
@@ -816,8 +846,8 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background-color: var(--primary-color);
         color: white;
         border-radius: 50%;
@@ -848,15 +878,15 @@
       /* Tablets and smaller screens */
       @media (max-width: 992px) {
         section {
-          padding: 3rem 0;
+          padding: 2.5rem 0;
         }
         
         .skills-grid {
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         }
         
         .projects-grid {
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         }
       }
 
@@ -872,7 +902,7 @@
 
         .mobile-menu {
           position: fixed;
-          top: 70px;
+          top: 60px;
           left: 0;
           width: 100%;
           background-color: white;
@@ -880,7 +910,7 @@
           padding: 1rem;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 0.8rem;
           transform: translateY(-100%);
           opacity: 0;
           visibility: hidden;
@@ -895,9 +925,10 @@
         }
 
         .mobile-menu a {
-          padding: 0.75rem 1rem;
+          padding: 0.6rem 1rem;
           border-bottom: 1px solid #f1f5f9;
           font-weight: 500;
+          font-size: 0.9rem;
         }
 
         .mobile-menu a:last-child {
@@ -905,32 +936,32 @@
         }
 
         .timeline::before {
-          left: 20px;
+          left: 18px;
         }
 
         .timeline-item {
-          padding-left: 50px;
+          padding-left: 45px;
         }
 
         .timeline-item::before {
-          left: 12px;
+          left: 10px;
         }
 
         header {
-          padding: 6rem 0 3rem;
+          padding: 5rem 0 3rem;
         }
 
         .profile-pic {
-          width: 150px;
-          height: 150px;
+          width: 120px;
+          height: 120px;
         }
 
         .hobbies-icons {
-          gap: 1rem;
+          gap: 0.8rem;
         }
         
         .hobby-item {
-          min-width: 70px;
+          min-width: 60px;
         }
 
         .footer-content {
@@ -944,7 +975,7 @@
 
         .header-btns .btn {
           width: 100%;
-          max-width: 250px;
+          max-width: 220px;
         }
       }
 
@@ -955,15 +986,15 @@
         }
         
         section {
-          padding: 2.5rem 0;
+          padding: 2rem 0;
         }
         
         h2 {
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.2rem;
         }
         
         .section-title {
-          margin-bottom: 2rem;
+          margin-bottom: 1.8rem;
         }
 
         .skills-grid {
@@ -984,68 +1015,29 @@
         }
 
         .timeline-content {
-          padding: 1.25rem;
+          padding: 1rem;
         }
 
         .skill-category, .research-list li, .hobbies-content {
-          padding: 1.25rem;
+          padding: 1rem;
         }
 
         .profile-pic {
-          width: 130px;
-          height: 130px;
+          width: 110px;
+          height: 110px;
         }
 
         .social-links {
-          gap: 10px;
+          gap: 8px;
         }
 
         .social-links a {
-          width: 45px;
-          height: 45px;
+          width: 38px;
+          height: 38px;
         }
 
         .hobbies-icons {
-          gap: 0.75rem;
-        }
-        
-        .hobby-item {
-          min-width: 60px;
-        }
-        
-        .hobby-item i {
-          font-size: 1.75rem;
-        }
-        
-        .back-to-top {
-          bottom: 15px;
-          right: 15px;
-          width: 45px;
-          height: 45px;
-        }
-      }
-
-      /* Very small mobile devices */
-      @media (max-width: 400px) {
-        header h1 {
-          font-size: 1.8rem;
-        }
-        
-        .tagline {
-          font-size: 0.95rem;
-        }
-        
-        .btn {
-          padding: 0.7rem 1.2rem;
-          font-size: 0.85rem;
-        }
-        
-        .project-img {
-          height: 150px;
-        }
-        
-        .project-content {
-          padding: 1.25rem;
+          gap: 0.6rem;
         }
         
         .hobby-item {
@@ -1053,7 +1045,46 @@
         }
         
         .hobby-item i {
-          font-size: 1.5rem;
+          font-size: 1.6rem;
+        }
+        
+        .back-to-top {
+          bottom: 15px;
+          right: 15px;
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      /* Very small mobile devices */
+      @media (max-width: 400px) {
+        header h1 {
+          font-size: 1.6rem;
+        }
+        
+        .tagline {
+          font-size: 0.85rem;
+        }
+        
+        .btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+        
+        .project-img {
+          height: 120px;
+        }
+        
+        .project-content {
+          padding: 1rem;
+        }
+        
+        .hobby-item {
+          min-width: 50px;
+        }
+        
+        .hobby-item i {
+          font-size: 1.4rem;
         }
         
         .hobby-item span {
@@ -1063,8 +1094,8 @@
     </style>
   </head>
   <body>
-    <!-- Code Background -->
-    <div class="code-background" id="codeBackground"></div>
+    <!-- Code Background - Only in Header -->
+    <div class="header-code-background" id="headerCodeBackground"></div>
     <div class="particles" id="particles"></div>
 
     <!-- Navigation -->
@@ -1094,8 +1125,8 @@
     </nav>
 
     <!-- Header -->
-    <header id="home">
-      <div class="container">
+    <header id="home" >
+      
         <div class="profile">
           <img src="image/elijah.jpg" alt="Elijah Mottey" class="profile-pic" />
           <h1>👋 Hi there! I'm Elijah Mottey</h1>
@@ -1612,9 +1643,9 @@
     </div>
 
     <script>
-      // Generate code background
-      function generateCodeBackground() {
-        const codeBackground = document.getElementById('codeBackground');
+      // Generate code background for header only
+      function generateHeaderCodeBackground() {
+        const codeBackground = document.getElementById('headerCodeBackground');
         const languages = [
           '// JavaScript\nfunction hello() {\n  console.log("Hello World!");\n}',
           '# Python\ndef hello():\n    print("Hello World!")',
@@ -1630,13 +1661,13 @@
           '// Kotlin\nfun main() {\n  println("Hello World!")\n}'
         ];
 
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 20; i++) {
           const codeLine = document.createElement('div');
           codeLine.className = 'code-line';
           codeLine.textContent = languages[Math.floor(Math.random() * languages.length)];
           codeLine.style.top = `${Math.random() * 100}%`;
           codeLine.style.animationDelay = `${Math.random() * 20}s`;
-          codeLine.style.fontSize = `${Math.random() * 4 + 12}px`;
+          codeLine.style.fontSize = `${Math.random() * 4 + 10}px`;
           codeBackground.appendChild(codeLine);
         }
       }
@@ -1644,7 +1675,7 @@
       // Generate particles
       function generateParticles() {
         const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 40; i++) {
           const particle = document.createElement('div');
           particle.className = 'particle';
           particle.style.left = `${Math.random() * 100}%`;
@@ -1717,6 +1748,24 @@
           }
         });
       });
+
+      function generateCodeBackground() {
+        const codeBackground = document.getElementsByClassName('codeBackground');
+        const languages = [
+          '// JavaScript\nfunction hello() {\n  console.log("Hello World!");\n}',
+          '# Python\ndef hello():\n    print("Hello World!")',
+          '// Java\npublic class Hello {\n  public static void main(String[] args) {\n    System.out.println("Hello World!");\n  }\n}',
+          '// TypeScript\nconst hello = (): void => {\n  console.log("Hello World!");\n}',
+          '// C++\n#include <iostream>\nint main() {\n  std::cout << "Hello World!";\n  return 0;\n}',
+          '// C#\nusing System;\nclass Program {\n  static void Main() {\n    Console.WriteLine("Hello World!");\n  }\n}',
+          '// PHP\n<?php\necho "Hello World!";\n?>',
+          '// Ruby\nputs "Hello World!"',
+          '// Go\npackage main\nimport "fmt"\nfunc main() {\n  fmt.Println("Hello World!")\n}',
+          '// Rust\nfn main() {\n  println!("Hello World!");\n}',
+          '// Swift\nprint("Hello World!")',
+          '// Kotlin\nfun main() {\n  println("Hello World!")\n}'
+        ];}
+
       
       // Close mobile menu when clicking outside
       document.addEventListener('click', (e) => {
@@ -1758,7 +1807,7 @@
       });
 
       // Initialize code background and particles
-      generateCodeBackground();
+      generateHeaderCodeBackground();
       generateParticles();
     </script>
   </body>
