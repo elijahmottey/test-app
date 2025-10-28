@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elijah Mottey - Software Engineer</title>
+    <title>Elijah Mottey - Software Engineer & Cloud Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
       /* CSS Variables for consistent theming */
@@ -29,6 +29,13 @@
       html {
         scroll-behavior: smooth;
         font-size: 16px;
+      }
+
+      .email{
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
       }
 
       body {
@@ -130,13 +137,45 @@
         color: white;
       }
 
+      /* Code Background */
+      .code-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.08;
+        overflow: hidden;
+      }
+
+      .code-line {
+        position: absolute;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        color: var(--primary-color);
+        white-space: nowrap;
+        animation: codeFlow 20s linear infinite;
+      }
+
+      @keyframes codeFlow {
+        0% {
+          transform: translateX(100vw);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
       /* Header Styles */
       header {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.9));
         color: white;
         padding: 5rem 0 3rem;
         text-align: center;
         margin-top: 70px;
+        position: relative;
+        overflow: hidden;
       }
 
       .profile {
@@ -164,6 +203,30 @@
         font-size: clamp(1.8rem, 5vw, 2.5rem);
         margin-bottom: 0.5rem;
         color: white;
+      }
+
+      .typewriter-container {
+        display: inline-block;
+        position: relative;
+      }
+
+      .typewriter {
+        overflow: hidden;
+        border-right: 2px solid white;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: 0.05em;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: white; }
       }
 
       .tagline {
@@ -213,7 +276,7 @@
 
       /* Section Styles */
       section:nth-child(even) {
-        background-color: #f1f5f9;
+        background-color: rgba(241, 245, 249, 0.7);
       }
 
       .section-title {
@@ -335,10 +398,45 @@
       }
 
       /* Projects */
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      .projects-container {
+        position: relative;
+        overflow: hidden;
+        padding: 1rem 0;
+      }
+
+      .projects-scroll {
+        display: flex;
         gap: 1.5rem;
+        animation: scrollProjects 30s linear infinite;
+        width: max-content;
+      }
+
+      .projects-scroll:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes scrollProjects {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .projects-grid {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .mobile-menu {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-color);
+        z-index: 1001;
       }
 
       .project-card {
@@ -352,6 +450,8 @@
         height: 100%;
         opacity: 0;
         transform: translateY(20px);
+        min-width: 300px;
+        max-width: 350px;
       }
 
       .project-card.animate {
@@ -455,8 +555,86 @@
       footer {
         background-color: var(--dark-color);
         color: white;
+        padding: 3rem 0 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        color: white;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        position: relative;
+      }
+
+      .footer-section h3::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background-color: var(--primary-color);
+      }
+
+      .footer-section p {
+        margin-bottom: 1rem;
+        opacity: 0.8;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: white;
+        transform: translateX(5px);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .footer-social a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
         text-align: center;
-        padding: 2rem 0;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-bottom p {
+        margin-bottom: 0;
+        opacity: 0.7;
       }
 
       /* Navigation */
@@ -646,6 +824,10 @@
         .hobby-item {
           min-width: 70px;
         }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* Mobile devices */
@@ -763,6 +945,9 @@
     </style>
   </head>
   <body>
+    <!-- Code Background -->
+    <div class="code-background" id="codeBackground"></div>
+
     <!-- Navigation -->
     <nav>
       <div class="container nav-container">
@@ -795,15 +980,15 @@
         <div class="profile">
           <img src="image/elijah.jpg" alt="Elijah Mottey" class="profile-pic" />
           <h1>👋 Hi there! I'm Elijah Mottey</h1>
-          <p class="tagline">
-            Software Engineer | Cloud Enthusiast
-          </p>
+          <div class="typewriter-container">
+            <p class="tagline typewriter">Software Developer & Cloud Engineer</p>
+          </div>
         </div>
 
         <div class="contact-info">
           <p>
             📫 Let's Connect:
-            <a href="mailto:elijahmottey5@gmail.com">elijahmottey5@gmail.com</a>
+            <a href="mailto:elijahmottey5@gmail.com" class="email">elijahmottey5@gmail.com</a>
           </p>
           <div class="social-links">
             <a href="https://www.linkedin.com/in/elijah-mottey" target="_blank" aria-label="LinkedIn">
@@ -936,121 +1121,245 @@
       <section id="projects" class="projects">
         <div class="container">
           <h2 class="section-title">🚀 Featured Projects</h2>
-          <div class="projects-grid">
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-hotel fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>Hotel Management System</h3>
-                <p>A comprehensive hotel management solution for room bookings, guest management, billing, and reporting.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Spring Boot</span>
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">PostgreSQL</span>
-                  <span class="tech-tag">Docker</span>
+          <div class="projects-container">
+            <div class="projects-scroll">
+              <div class="projects-grid">
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-hotel fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>Hotel Management System</h3>
+                    <p>A comprehensive hotel management solution for room bookings, guest management, billing, and reporting.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Spring Boot</span>
+                      <span class="tech-tag">React</span>
+                      <span class="tech-tag">PostgreSQL</span>
+                      <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="#" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/hotel-management-system" class="btn">Source Code</a>
+                    </div>
+                  </div>
                 </div>
-                <div class="project-links">
-                  <a href="#" class="btn btn-outline">View Demo</a>
-                  <a href="#" class="btn">Source Code</a>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-shopping-cart fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>AgriIdea Platform</h3>
+                    <p>An e-commerce web platform for agricultural commerce in Ghana — enabling farmers to sell produce online.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Next.js</span>
+                      <span class="tech-tag">Spring Boot</span>
+                      <span class="tech-tag">PostgreSQL</span>
+                      <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="https://screeching-kanya-livtech-4617c055.koyeb.app/" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/agriIdea" class="btn">Source Code</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-comments fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>SoPPS Online Suggestion Box</h3>
+                    <p>A web-based feedback platform for students at UCC School of Pharmacy.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Spring Boot</span>
+                      <span class="tech-tag">Next.js</span>
+                      <span class="tech-tag">Axios</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="https://suggestions-ebon.vercel.app/" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/OnlineSuggestionBox" class="btn">Source Code</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-brain fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>Harmony Haven App</h3>
+                    <p>Full-stack mental health application with AI integration, community features, and third-party authentication.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Next.js</span>
+                      <span class="tech-tag">TypeScript</span>
+                      <span class="tech-tag">Spring Boot</span>
+                      <span class="tech-tag">ChatGPT API</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="https://harmony-haven-app.vercel.app/" class="btn btn-outline">View Demo</a>
+                      <a href="#" class="btn">Source Code</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-tasks fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>Task Tracker App</h3>
+                    <p>A productivity application for tracking personal and team tasks.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Next.js</span>
+                      <span class="tech-tag">TypeScript</span>
+                      <span class="tech-tag">Spring Boot</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="#" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/tasks" class="btn">Source Code</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-sticky-note fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>Note Taking App</h3>
+                    <p>A responsive note-taking application with rich text editing, categorization, and search functionality.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">React</span>
+                      <span class="tech-tag">Node.js</span>
+                      <span class="tech-tag">Superbase</span>
+                      <span class="tech-tag">aws amplify</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="#" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/notes-app" class="btn">Source Code</a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-shopping-cart fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>AgriIdea Platform</h3>
-                <p>An e-commerce web platform for agricultural commerce in Ghana — enabling farmers to sell produce online.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Next.js</span>
-                  <span class="tech-tag">Spring Boot</span>
-                  <span class="tech-tag">PostgreSQL</span>
-                  <span class="tech-tag">Docker</span>
+              <!-- Duplicate for seamless scrolling -->
+              <div class="projects-grid">
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-hotel fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>Hotel Management System</h3>
+                    <p>A comprehensive hotel management solution for room bookings, guest management, billing, and reporting.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Spring Boot</span>
+                      <span class="tech-tag">React</span>
+                      <span class="tech-tag">PostgreSQL</span>
+                      <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="#" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/hotel-management-system" class="btn">Source Code</a>
+                    </div>
+                  </div>
                 </div>
-                <div class="project-links">
-                  <a href="#" class="btn btn-outline">View Demo</a>
-                  <a href="#" class="btn">Source Code</a>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-shopping-cart fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>AgriIdea Platform</h3>
+                    <p>An e-commerce web platform for agricultural commerce in Ghana — enabling farmers to sell produce online.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Next.js</span>
+                      <span class="tech-tag">Spring Boot</span>
+                      <span class="tech-tag">PostgreSQL</span>
+                      <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="https://screeching-kanya-livtech-4617c055.koyeb.app/" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/agriIdea" class="btn">Source Code</a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-comments fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>SoPPS Online Suggestion Box</h3>
-                <p>A web-based feedback platform for students at UCC School of Pharmacy.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Spring Boot</span>
-                  <span class="tech-tag">Next.js</span>
-                  <span class="tech-tag">Axios</span>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-comments fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>SoPPS Online Suggestion Box</h3>
+                    <p>A web-based feedback platform for students at UCC School of Pharmacy.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Spring Boot</span>
+                      <span class="tech-tag">Next.js</span>
+                      <span class="tech-tag">Axios</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="https://suggestions-ebon.vercel.app/" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/OnlineSuggestionBox" class="btn">Source Code</a>
+                    </div>
+                  </div>
                 </div>
-                <div class="project-links">
-                  <a href="https://suggestions-ebon.vercel.app/" class="btn btn-outline">View Demo</a>
-                  <a href="#" class="btn">Source Code</a>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-brain fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>Harmony Haven App</h3>
+                    <p>Full-stack mental health application with AI integration, community features, and third-party authentication.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Next.js</span>
+                      <span class="tech-tag">TypeScript</span>
+                      <span class="tech-tag">Spring Boot</span>
+                      <span class="tech-tag">ChatGPT API</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="https://harmony-haven-app.vercel.app/" class="btn btn-outline">View Demo</a>
+                      <a href="#" class="btn">Source Code</a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-brain fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>Harmony Haven App</h3>
-                <p>Full-stack mental health application with AI integration, community features, and third-party authentication.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Next.js</span>
-                  <span class="tech-tag">TypeScript</span>
-                  <span class="tech-tag">Spring Boot</span>
-                  <span class="tech-tag">ChatGPT API</span>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-tasks fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>Task Tracker App</h3>
+                    <p>A productivity application for tracking personal and team tasks.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">Next.js</span>
+                      <span class="tech-tag">TypeScript</span>
+                      <span class="tech-tag">Spring Boot</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="#" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/tasks" class="btn">Source Code</a>
+                    </div>
+                  </div>
                 </div>
-                <div class="project-links">
-                  <a href="https://harmony-haven-app.vercel.app/" class="btn btn-outline">View Demo</a>
-                  <a href="#" class="btn">Source Code</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-tasks fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>Task Tracker App</h3>
-                <p>A productivity application for tracking personal and team tasks.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Next.js</span>
-                  <span class="tech-tag">TypeScript</span>
-                  <span class="tech-tag">Spring Boot</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" class="btn btn-outline">View Demo</a>
-                  <a href="#" class="btn">Source Code</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-sticky-note fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>Note Taking App</h3>
-                <p>A responsive note-taking application with rich text editing, categorization, and search functionality.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">Node.js</span>
-                  <span class="tech-tag">MongoDB</span>
-                  <span class="tech-tag">Express</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" class="btn btn-outline">View Demo</a>
-                  <a href="#" class="btn">Source Code</a>
+                
+                <div class="project-card">
+                  <div class="project-img">
+                    <i class="fas fa-sticky-note fa-3x"></i>
+                  </div>
+                  <div class="project-content">
+                    <h3>Note Taking App</h3>
+                    <p>A responsive note-taking application with rich text editing, categorization, and search functionality.</p>
+                    <div class="project-tech">
+                      <span class="tech-tag">React</span>
+                      <span class="tech-tag">Node.js</span>
+                      <span class="tech-tag">Superbase</span>
+                      <span class="tech-tag">aws amplify</span>
+                    </div>
+                    <div class="project-links">
+                      <a href="#" class="btn btn-outline">View Demo</a>
+                      <a href="https://github.com/elijahmottey/notes-app" class="btn">Source Code</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1067,7 +1376,6 @@
               <div class="timeline-content">
                 <h3>BSc. Computer Science</h3>
                 <p class="date">University of Cape Coast, Ghana | Graduated 2024</p>
-                <p>Second Class Upper Honors</p>
                 <p>Relevant coursework: Software Engineering, Database Systems, Web Development, Artificial Intelligence</p>
               </div>
             </div>
@@ -1131,8 +1439,47 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2025 Elijah Mottey. All rights reserved.</p>
-        <p>Designed and built with ❤️ by Elijah Mottey</p>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>About Me</h3>
+            <p>Software Developer & Cloud Engineer passionate about creating innovative solutions and making a positive impact through technology.</p>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/in/elijah-mottey" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/elijahmottey" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+              <a href="#home">Home</a>
+              <a href="#skills">Skills</a>
+              <a href="#experience">Experience</a>
+              <a href="#projects">Projects</a>
+              <a href="#education">Education</a>
+              <a href="#research">Research</a>
+            </div>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-envelope"></i> elijahmottey5@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Ghana</p>
+            <a href="https://drive.google.com/file/d/your-resume-link-here/view" download class="btn" style="margin-top: 10px;">Download CV</a>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2025 Elijah Mottey. All rights reserved.</p>
+          <p>Designed and built with ❤️ by Elijah Mottey</p>
+        </div>
       </div>
     </footer>
 
@@ -1142,6 +1489,35 @@
     </div>
 
     <script>
+      // Generate code background
+      function generateCodeBackground() {
+        const codeBackground = document.getElementById('codeBackground');
+        const languages = [
+          '// JavaScript\nfunction hello() {\n  console.log("Hello World!");\n}',
+          '# Python\ndef hello():\n    print("Hello World!")',
+          '// Java\npublic class Hello {\n  public static void main(String[] args) {\n    System.out.println("Hello World!");\n  }\n}',
+          '// TypeScript\nconst hello = (): void => {\n  console.log("Hello World!");\n}',
+          '// C++\n#include <iostream>\nint main() {\n  std::cout << "Hello World!";\n  return 0;\n}',
+          '// C#\nusing System;\nclass Program {\n  static void Main() {\n    Console.WriteLine("Hello World!");\n  }\n}',
+          '// PHP\n<?php\necho "Hello World!";\n?>',
+          '// Ruby\nputs "Hello World!"',
+          '// Go\npackage main\nimport "fmt"\nfunc main() {\n  fmt.Println("Hello World!")\n}',
+          '// Rust\nfn main() {\n  println!("Hello World!");\n}',
+          '// Swift\nprint("Hello World!")',
+          '// Kotlin\nfun main() {\n  println("Hello World!")\n}'
+        ];
+
+        for (let i = 0; i < 30; i++) {
+          const codeLine = document.createElement('div');
+          codeLine.className = 'code-line';
+          codeLine.textContent = languages[Math.floor(Math.random() * languages.length)];
+          codeLine.style.top = `${Math.random() * 100}%`;
+          codeLine.style.animationDelay = `${Math.random() * 20}s`;
+          codeLine.style.fontSize = `${Math.random() * 4 + 12}px`;
+          codeBackground.appendChild(codeLine);
+        }
+      }
+
       // Mobile Menu Toggle
       const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
       const mobileMenu = document.querySelector('.mobile-menu');
@@ -1244,6 +1620,9 @@
       document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
       });
+
+      // Initialize code background
+      generateCodeBackground();
     </script>
   </body>
 </html>
