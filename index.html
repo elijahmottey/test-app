@@ -18,7 +18,7 @@
         --light-color: #f8fafc;
         --dark-color: #111827;
         --gray-color: #6b7280;
-        --card-bg: rgba(255, 255, 255, 0.8);
+        --card-bg: rgba(255, 255, 255, 0.95);
         --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         --border-radius: 16px;
@@ -45,6 +45,10 @@
         background: linear-gradient(135deg, #f0f4ff 0%, #fdf2f8 100%);
         overflow-x: hidden;
         min-height: 100vh;
+      }
+
+      .mobile-menu{
+        display:none;
       }
 
       .container {
@@ -325,13 +329,13 @@
       /* Skills Section */
       .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
       }
 
       .skill-category {
         background: var(--card-bg);
-        padding: 2rem;
+        padding: 1.5rem;
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
         transition: var(--transition);
@@ -340,32 +344,32 @@
       }
 
       .skill-category:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
 
       .skill-category h3 {
         display: flex;
         align-items: center;
         gap: 12px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
         color: var(--primary-color);
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
 
       .skill-category ul li {
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.6rem;
         display: flex;
         align-items: center;
-        gap: 12px;
-        font-size: 1.05rem;
+        gap: 10px;
+        font-size: 0.95rem;
       }
 
       .skill-category ul li i {
         color: var(--primary-color);
-        width: 20px;
+        width: 18px;
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
 
       /* Experience & Education */
@@ -388,7 +392,7 @@
 
       .timeline-item {
         position: relative;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
         padding-left: 80px;
       }
 
@@ -407,7 +411,7 @@
 
       .timeline-content {
         background: var(--card-bg);
-        padding: 2rem;
+        padding: 1.8rem;
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
         backdrop-filter: blur(10px);
@@ -416,14 +420,14 @@
 
       .timeline-content h3 {
         color: var(--primary-color);
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
 
       .timeline-content .date {
         color: var(--gray-color);
         font-weight: 600;
         margin-bottom: 0.8rem;
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
 
       .timeline-content ul {
@@ -431,10 +435,10 @@
       }
 
       .timeline-content ul li {
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.5rem;
         position: relative;
         padding-left: 1rem;
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
 
       .timeline-content ul li::before {
@@ -442,15 +446,28 @@
         position: absolute;
         left: 0;
         color: var(--primary-color);
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
-      /* Projects Section */
-      .projects-showcase {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      /* Projects Section - Horizontal Scroll */
+      .projects-container {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 0;
+      }
+
+      .projects-scroll {
+        display: flex;
         gap: 2rem;
-        margin-bottom: 3rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 2rem 0;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+      }
+
+      .projects-scroll::-webkit-scrollbar {
+        display: none; /* Chrome, Safari and Opera */
       }
 
       .project-card {
@@ -464,21 +481,34 @@
         height: 100%;
         backdrop-filter: blur(10px);
         border: 1px solid var(--glass-border);
+        min-width: 320px;
+        max-width: 320px;
+        flex-shrink: 0;
+        position: relative;
+        filter: blur(2px);
+        opacity: 0.7;
+        transform: scale(0.95);
+      }
+
+      .project-card.active {
+        filter: blur(0);
+        opacity: 1;
+        transform: scale(1);
       }
 
       .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
       }
 
       .project-img {
-        height: 200px;
+        height: 160px;
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 3.5rem;
+        font-size: 2.5rem;
         position: relative;
         overflow: hidden;
       }
@@ -494,7 +524,7 @@
       }
 
       .project-content {
-        padding: 2rem;
+        padding: 1.5rem;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -502,45 +532,45 @@
 
       .project-content h3 {
         color: var(--primary-color);
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
       }
 
       .project-content p {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
         flex-grow: 1;
       }
 
       .project-tech {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin: 1.5rem 0;
+        gap: 6px;
+        margin: 1.2rem 0;
       }
 
       .tech-tag {
         background: rgba(99, 102, 241, 0.1);
         color: var(--primary-color);
-        padding: 6px 12px;
+        padding: 4px 10px;
         border-radius: 20px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 500;
         font-family: 'Space Grotesk', sans-serif;
       }
 
       .project-links {
         display: flex;
-        gap: 12px;
+        gap: 10px;
         margin-top: auto;
       }
 
       .project-links .btn {
         flex: 1;
-        min-width: 120px;
-        font-size: 0.9rem;
-        padding: 0.8rem 1.2rem;
+        min-width: 100px;
+        font-size: 0.85rem;
+        padding: 0.7rem 1rem;
       }
 
       .view-all-container {
@@ -624,17 +654,17 @@
 
       .modal-projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         gap: 2rem;
       }
 
       /* Research & Hobbies */
       .research-list li, .hobbies-content {
         background: var(--card-bg);
-        padding: 2rem;
+        padding: 1.8rem;
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
-        margin-bottom: 2rem;
+        margin-bottom: 1.8rem;
         transition: var(--transition);
         backdrop-filter: blur(10px);
         border: 1px solid var(--glass-border);
@@ -651,8 +681,8 @@
       .hobbies-icons {
         display: flex;
         justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
+        gap: 1.5rem;
+        margin-top: 1.8rem;
         flex-wrap: wrap;
       }
 
@@ -660,10 +690,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
-        min-width: 100px;
+        gap: 10px;
+        min-width: 90px;
         transition: var(--transition);
-        padding: 1.5rem;
+        padding: 1.2rem;
         border-radius: var(--border-radius);
       }
 
@@ -673,12 +703,12 @@
       }
 
       .hobby-item i {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: var(--primary-color);
       }
 
       .hobby-item span {
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 500;
       }
 
@@ -797,10 +827,10 @@
         top: 0;
         left: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         z-index: 1000;
-        padding: 1rem 0;
+        padding: 0.8rem 0;
         backdrop-filter: blur(10px);
         transition: var(--transition);
       }
@@ -812,22 +842,47 @@
       }
 
       .logo {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 700;
         color: var(--primary-color);
         font-family: 'Space Grotesk', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo-liv {
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
       }
 
       .nav-links {
         display: flex;
-        gap: 2rem;
+        gap: 1.5rem;
       }
 
       .nav-links a {
         color: var(--text-color);
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 0.9rem;
         position: relative;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav-links a i {
+        font-size: 0.85rem;
+        opacity: 0.7;
       }
 
       .nav-links a::after {
@@ -892,8 +947,13 @@
 
       /* Responsive Design */
       @media (max-width: 992px) {
-        .projects-showcase {
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .projects-scroll {
+          gap: 1.5rem;
+        }
+        
+        .project-card {
+          min-width: 300px;
+          max-width: 300px;
         }
         
         .modal-projects-grid {
@@ -912,7 +972,8 @@
 
         .mobile-menu {
           position: fixed;
-          top: 80px;
+
+          top: 70px;
           left: 0;
           width: 100%;
           background: white;
@@ -960,6 +1021,7 @@
 
         header {
           padding: 8rem 0 4rem;
+          margin-top: 70px;
         }
 
         .profile-pic {
@@ -1020,8 +1082,9 @@
           gap: 1.5rem;
         }
 
-        .projects-showcase {
-          grid-template-columns: 1fr;
+        .project-card {
+          min-width: 280px;
+          max-width: 280px;
         }
 
         .project-links {
@@ -1079,26 +1142,29 @@
     <!-- Navigation -->
     <nav>
       <div class="container nav-container">
-        <div class="logo">Elijah Mottey</div>
+        <div class="logo">
+          <div class="logo-liv">LIV</div>
+          Elijah Mottey
+        </div>
         <div class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#education">Education</a>
-          <a href="#research">Research</a>
+          <a href="#home"><i class="fas fa-home"></i> Home</a>
+          <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+          <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
+          <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+          <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+          <a href="#research"><i class="fas fa-search"></i> Research</a>
         </div>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
           <i class="fas fa-bars"></i>
         </button>
       </div>
       <div class="mobile-menu">
-        <a href="#home">Home</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#research">Research</a>
+        <a href="#home"><i class="fas fa-home"></i> Home</a>
+        <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+        <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
+        <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+        <a href="#research"><i class="fas fa-search"></i> Research</a>
       </div>
     </nav>
 
@@ -1253,62 +1319,103 @@
       <section id="projects" class="projects">
         <div class="container">
           <h2 class="section-title">Featured Projects</h2>
-          <div class="projects-showcase">
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-hotel fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>Hotel Management System</h3>
-                <p>A comprehensive hotel management solution for room bookings, guest management, billing, and reporting.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Spring Boot</span>
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">PostgreSQL</span>
-                  <span class="tech-tag">Docker</span>
+          <div class="projects-container">
+            <div class="projects-scroll" id="projectsScroll">
+              <div class="project-card">
+                <div class="project-img">
+                  <i class="fas fa-hotel fa-2x"></i>
                 </div>
-                <div class="project-links">
-                  <a href="#" class="btn btn-outline">View Demo</a>
-                  <a href="https://github.com/elijahmottey/hotel-management-system" class="btn">Source Code</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-shopping-cart fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>AgriIdea Platform</h3>
-                <p>An e-commerce web platform for agricultural commerce in Ghana — enabling farmers to sell produce online.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Next.js</span>
-                  <span class="tech-tag">Spring Boot</span>
-                  <span class="tech-tag">PostgreSQL</span>
-                  <span class="tech-tag">Docker</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://screeching-kanya-livtech-4617c055.koyeb.app/" class="btn btn-outline">View Demo</a>
-                  <a href="https://github.com/elijahmottey/agriIdea" class="btn">Source Code</a>
+                <div class="project-content">
+                  <h3>Hotel Management System</h3>
+                  <p>A comprehensive hotel management solution for room bookings, guest management, billing, and reporting.</p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Spring Boot</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Docker</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="btn btn-outline">View Demo</a>
+                    <a href="https://github.com/elijahmottey/hotel-management-system" class="btn">Source Code</a>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="project-img">
-                <i class="fas fa-comments fa-3x"></i>
-              </div>
-              <div class="project-content">
-                <h3>SoPPS Online Suggestion Box</h3>
-                <p>A web-based feedback platform for students at UCC School of Pharmacy.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Spring Boot</span>
-                  <span class="tech-tag">Next.js</span>
-                  <span class="tech-tag">Axios</span>
+              
+              <div class="project-card">
+                <div class="project-img">
+                  <i class="fas fa-shopping-cart fa-2x"></i>
                 </div>
-                <div class="project-links">
-                  <a href="https://suggestions-ebon.vercel.app/" class="btn btn-outline">View Demo</a>
-                  <a href="https://github.com/elijahmottey/OnlineSuggestionBox" class="btn">Source Code</a>
+                <div class="project-content">
+                  <h3>AgriIdea Platform</h3>
+                  <p>An e-commerce web platform for agricultural commerce in Ghana — enabling farmers to sell produce online.</p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Spring Boot</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Docker</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="https://screeching-kanya-livtech-4617c055.koyeb.app/" class="btn btn-outline">View Demo</a>
+                    <a href="https://github.com/elijahmottey/agriIdea" class="btn">Source Code</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-img">
+                  <i class="fas fa-comments fa-2x"></i>
+                </div>
+                <div class="project-content">
+                  <h3>SoPPS Online Suggestion Box</h3>
+                  <p>A web-based feedback platform for students at UCC School of Pharmacy.</p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Spring Boot</span>
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Axios</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="https://suggestions-ebon.vercel.app/" class="btn btn-outline">View Demo</a>
+                    <a href="https://github.com/elijahmottey/OnlineSuggestionBox" class="btn">Source Code</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-img">
+                  <i class="fas fa-brain fa-2x"></i>
+                </div>
+                <div class="project-content">
+                  <h3>Harmony Haven App</h3>
+                  <p>Full-stack mental health application with AI integration, community features, and third-party authentication.</p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Spring Boot</span>
+                    <span class="tech-tag">ChatGPT API</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="https://harmony-haven-app.vercel.app/" class="btn btn-outline">View Demo</a>
+                    <a href="#" class="btn">Source Code</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="project-card">
+                <div class="project-img">
+                  <i class="fas fa-tasks fa-2x"></i>
+                </div>
+                <div class="project-content">
+                  <h3>Task Tracker App</h3>
+                  <p>A productivity application for tracking personal and team tasks.</p>
+                  <div class="project-tech">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Spring Boot</span>
+                  </div>
+                  <div class="project-links">
+                    <a href="#" class="btn btn-outline">View Demo</a>
+                    <a href="https://github.com/elijahmottey/tasks" class="btn">Source Code</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1622,7 +1729,7 @@
           
           projectCard.innerHTML = `
             <div class="project-img">
-              <i class="${project.icon} fa-3x"></i>
+              <i class="${project.icon} fa-2x"></i>
             </div>
             <div class="project-content">
               <h3>${project.title}</h3>
@@ -1669,6 +1776,80 @@
           document.body.style.overflow = 'auto';
         }
       });
+
+      // Infinite horizontal scroll with blur effect
+      const projectsScroll = document.getElementById('projectsScroll');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      // Initialize first card as active
+      if (projectCards.length > 0) {
+        projectCards[0].classList.add('active');
+      }
+      
+      // Update active card based on scroll position
+      projectsScroll.addEventListener('scroll', () => {
+        const scrollLeft = projectsScroll.scrollLeft;
+        const scrollWidth = projectsScroll.scrollWidth;
+        const clientWidth = projectsScroll.clientWidth;
+        
+        projectCards.forEach(card => {
+          const cardRect = card.getBoundingClientRect();
+          const containerRect = projectsScroll.getBoundingClientRect();
+          const cardCenter = cardRect.left - containerRect.left + cardRect.width / 2;
+          const containerCenter = containerRect.width / 2;
+          
+          // Calculate distance from center
+          const distance = Math.abs(cardCenter - containerCenter);
+          const maxDistance = containerRect.width / 2;
+          
+          // Update blur and opacity based on distance from center
+          const blurAmount = (distance / maxDistance) * 2;
+          const opacityAmount = 1 - (distance / maxDistance) * 0.3;
+          
+          card.style.filter = `blur(${blurAmount}px)`;
+          card.style.opacity = opacityAmount;
+          card.style.transform = `scale(${1 - (distance / maxDistance) * 0.05})`;
+          
+          // Set active class for center card
+          if (distance < 100) {
+            card.classList.add('active');
+          } else {
+            card.classList.remove('active');
+          }
+        });
+      });
+      
+      // Auto-scroll for infinite effect
+      let scrollDirection = 1; // 1 for right, -1 for left
+      let autoScrollInterval;
+      
+      function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+          projectsScroll.scrollLeft += scrollDirection * 2;
+          
+          // Check if we've reached the end and reverse direction
+          if (projectsScroll.scrollLeft + projectsScroll.clientWidth >= projectsScroll.scrollWidth - 10) {
+            scrollDirection = -1;
+          } else if (projectsScroll.scrollLeft <= 10) {
+            scrollDirection = 1;
+          }
+        }, 30);
+      }
+      
+      function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+      }
+      
+      // Start auto-scroll on page load
+      startAutoScroll();
+      
+      // Pause auto-scroll on hover
+      projectsScroll.addEventListener('mouseenter', stopAutoScroll);
+      projectsScroll.addEventListener('mouseleave', startAutoScroll);
+      
+      // Pause auto-scroll on touch
+      projectsScroll.addEventListener('touchstart', stopAutoScroll);
+      projectsScroll.addEventListener('touchend', startAutoScroll);
     </script>
   </body>
 </html>
