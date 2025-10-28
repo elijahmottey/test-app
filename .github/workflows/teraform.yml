@@ -33,7 +33,7 @@ jobs:
           terraform init \
             -backend-config="bucket=${{ secrets.LOCK_BUCKET }}" \
             -backend-config="region=${{ secrets.AWS_REGION }}" \
-            -backend-config="key=terraform/state1/terraform.tfstate" \
+            -backend-config="key=terraform/state5/terraform.tfstate" \
             -backend-config="encrypt=true" \
             -backend-config="dynamodb_table=${{ secrets.DYNAMO_TABLE }}"
         working-directory: terraform
@@ -69,6 +69,13 @@ jobs:
             -var="lock_bucket_name=${LOCK_BUCKET}" \
             -var="dynamodb_table_name=${DYNAMODB_TABLE_NAME}"
         working-directory: terraform
+
+      - name: Cleanup Terraform lock on failure
+        if: failure()
+        run: |
+          terraform force-unlock -force $(terraform show -json | jq -r '.lock_id')
+        working-directory: terraform
+
 
       - name: Install AWS CLI
         run: |
