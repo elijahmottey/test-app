@@ -47,27 +47,27 @@ jobs:
           BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           LOCK_BUCKET: ${{ secrets.LOCK_BUCKET }}
-          DYNAMO_TABLE: ${{ secrets.DYNAMO_TABLE }}
+          DYNAMODB_TABLE_NAME: ${{ secrets.DYNAMO_TABLE }}
         run: |
           terraform plan \
             -var="bucket_name=${BUCKET_NAME}" \
-            -var="aws_region=${AWS_REGION}" \
-            -var="lock_bucket=${LOCK_BUCKET}" \
-            -var="dynamo_table=${DYNAMO_TABLE}"
+            -var="region=${AWS_REGION}" \
+            -var="lock_bucket_name=${LOCK_BUCKET}" \
+            -var="dynamodb_table_name=${DYNAMODB_TABLE_NAME}"
         working-directory: terraform
 
       - name: Terraform Apply
         env:
-          TR_VAR_BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME_TR }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           LOCK_BUCKET: ${{ secrets.LOCK_BUCKET }}
-          DYNAMO_TABLE: ${{ secrets.DYNAMO_TABLE }}
+          DYNAMODB_TABLE_NAME: ${{ secrets.DYNAMO_TABLE }}
         run: |
           terraform apply -auto-approve \
-            -var="bucket_name=${TR_VAR_BUCKET_NAME}" \
-            -var="aws_region=${AWS_REGION}" \
-            -var="lock_bucket=${LOCK_BUCKET}" \
-            -var="dynamo_table=${DYNAMO_TABLE}"
+            -var="bucket_name=${BUCKET_NAME}" \
+            -var="region=${AWS_REGION}" \
+            -var="lock_bucket_name=${LOCK_BUCKET}" \
+            -var="dynamodb_table_name=${DYNAMODB_TABLE_NAME}"
         working-directory: terraform
 
       - name: Install AWS CLI
