@@ -219,7 +219,7 @@
       }
 
       .dark-mode header {
-        background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(55, 65, 81, 0.9) 100%);
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
       }
 
       header::before {
@@ -521,13 +521,11 @@
         max-width: 320px;
         flex-shrink: 0;
         position: relative;
-        filter: blur(2px);
         opacity: 0.7;
         transform: scale(0.95);
       }
 
       .project-card.active {
-        filter: blur(0);
         opacity: 1;
         transform: scale(1);
       }
@@ -1087,6 +1085,72 @@
         transition: width 0.3s ease;
       }
 
+      /* Emoji animations */
+      .emoji {
+        display: inline-block;
+      
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      /* Professional enhancements */
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0;
+      }
+
+      .stat-card {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        text-align: center;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 1px solid var(--glass-border);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        color: var(--gray-color);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .testimonial {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        margin: 2rem 0;
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 1rem;
+        color: var(--text-color);
+      }
+
+      .testimonial-author {
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
       /* Responsive Design */
       @media (max-width: 992px) {
         .projects-scroll {
@@ -1200,6 +1264,10 @@
         .modal-projects-grid {
           grid-template-columns: 1fr;
         }
+
+        .stats-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       @media (max-width: 576px) {
@@ -1277,6 +1345,10 @@
           width: 45px;
           height: 45px;
         }
+
+        .stats-container {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -1284,7 +1356,7 @@
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
       <div class="loader"></div>
-      <div class="loading-text">Loading Portfolio...</div>
+      <div class="loading-text">Loading Portfolio... <span class="emoji">✨</span></div>
     </div>
 
     <!-- Progress Bar -->
@@ -1334,11 +1406,11 @@
       <div class="container">
         <div class="profile">
           <img src="image/elijah.jpg" alt="Elijah Mottey" class="profile-pic" />
-          <h1>Elijah Mottey</h1>
+          <h1>Elijah Mottey <span class="emoji">👋</span></h1>
           <div class="typewriter-container">
             <p class="tagline typewriter changeColor">Software Developer & Cloud Engineer</p>
           </div>
-          <p class="tagline changeColor ">Building innovative solutions with modern technologies and cloud infrastructure</p>
+          <p class="tagline changeColor ">Building innovative solutions with modern technologies and cloud infrastructure <span class="emoji">🚀</span></p>
         </div>
 
         <div class="contact-info">
@@ -1371,68 +1443,70 @@
     </header>
 
     <main>
+      
+
       <!-- Skills Section -->
       <section id="skills" class="skills">
         <div class="container">
-          <h2 class="section-title">Skills & Expertise</h2>
+          <h2 class="section-title">Skills & Expertise <span class="emoji">🛠️</span></h2>
           <div class="skills-grid">
             <div class="skill-category">
               <h3><i class="fas fa-code"></i> Programming Languages</h3>
               <ul>
-                <li><i class="fab fa-js-square"></i> JavaScript</li>
-                <li><i class="fas fa-code"></i> TypeScript</li>
-                <li><i class="fab fa-java"></i> Java</li>
-                <li><i class="fab fa-python"></i> Python</li>
+                <li><i class="fab fa-js-square"></i> JavaScript <span class="emoji">✨</span></li>
+                <li><i class="fas fa-code"></i> TypeScript <span class="emoji">🔷</span></li>
+                <li><i class="fab fa-java"></i> Java <span class="emoji">☕</span></li>
+                <li><i class="fab fa-python"></i> Python <span class="emoji">🐍</span></li>
               </ul>
             </div>
             
             <div class="skill-category">
               <h3><i class="fas fa-palette"></i> Frontend</h3>
               <ul>
-                <li><i class="fab fa-html5"></i> HTML</li>
-                <li><i class="fab fa-css3-alt"></i> CSS</li>
-                <li><i class="fab fa-react"></i> React</li>
-                <li><i class="fas fa-bolt"></i> Next.js</li>
-                <li><i class="fas fa-wind"></i> Tailwind CSS</li>
+                <li><i class="fab fa-html5"></i> HTML <span class="emoji">📄</span></li>
+                <li><i class="fab fa-css3-alt"></i> CSS <span class="emoji">🎨</span></li>
+                <li><i class="fab fa-react"></i> React <span class="emoji">⚛️</span></li>
+                <li><i class="fas fa-bolt"></i> Next.js <span class="emoji">⚡</span></li>
+                <li><i class="fas fa-wind"></i> Tailwind CSS <span class="emoji">💨</span></li>
               </ul>
             </div>
             
             <div class="skill-category">
               <h3><i class="fas fa-server"></i> Backend</h3>
               <ul>
-                <li><i class="fas fa-leaf"></i> Spring Boot</li>
-                <li><i class="fab fa-python"></i> Flask</li>
+                <li><i class="fas fa-leaf"></i> Spring Boot <span class="emoji">🌱</span></li>
+                <li><i class="fab fa-python"></i> Flask <span class="emoji">🔥</span></li>
               </ul>
             </div>
             
             <div class="skill-category">
               <h3><i class="fas fa-database"></i> Databases</h3>
               <ul>
-                <li><i class="fas fa-database"></i> PostgreSQL</li>
-                <li><i class="fas fa-database"></i> MySQL</li>
-                <li><i class="fas fa-database"></i> MongoDB</li>
+                <li><i class="fas fa-database"></i> PostgreSQL <span class="emoji">🐘</span></li>
+                <li><i class="fas fa-database"></i> MySQL <span class="emoji">🐬</span></li>
+                <li><i class="fas fa-database"></i> MongoDB <span class="emoji">🍃</span></li>
               </ul>
             </div>
             
             <div class="skill-category">
               <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
               <ul>
-                <li><i class="fab fa-docker"></i> Docker</li>
-                <li><i class="fab fa-aws"></i> AWS</li>
-                <li><i class="fas fa-rocket"></i> Render</li>
-                <li><i class="fas fa-server"></i> Koyeb</li>
-                <li><i class="fab fa-github"></i> GitHub Actions (CI/CD)</li>
+                <li><i class="fab fa-docker"></i> Docker <span class="emoji">🐳</span></li>
+                <li><i class="fab fa-aws"></i> AWS <span class="emoji">☁️</span></li>
+                <li><i class="fas fa-rocket"></i> Render <span class="emoji">🚀</span></li>
+                <li><i class="fas fa-server"></i> Koyeb <span class="emoji">🖥️</span></li>
+                <li><i class="fab fa-github"></i> GitHub Actions (CI/CD) <span class="emoji">🔧</span></li>
               </ul>
             </div>
             
             <div class="skill-category">
               <h3><i class="fas fa-tools"></i> Tools</h3>
               <ul>
-                <li><i class="fab fa-git-alt"></i> Git</li>
-                <li><i class="fas fa-code"></i> VS Code</li>
-                <li><i class="fab fa-jetbrains"></i> IntelliJ</li>
-                <li><i class="fas fa-cube"></i> Postman</li>
-                <li><i class="fas fa-paint-brush"></i> Adobe Photoshop</li>
+                <li><i class="fab fa-git-alt"></i> Git <span class="emoji">📚</span></li>
+                <li><i class="fas fa-code"></i> VS Code <span class="emoji">💻</span></li>
+                <li><i class="fab fa-jetbrains"></i> IntelliJ <span class="emoji">🧠</span></li>
+                <li><i class="fas fa-cube"></i> Postman <span class="emoji">📬</span></li>
+                <li><i class="fas fa-paint-brush"></i> Adobe Photoshop <span class="emoji">🎨</span></li>
               </ul>
             </div>
           </div>
@@ -1442,32 +1516,32 @@
       <!-- Experience Section -->
       <section id="experience" class="experience">
         <div class="container">
-          <h2 class="section-title">Experience</h2>
+          <h2 class="section-title">Experience <span class="emoji">💼</span></h2>
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-content">
-                <h3>University of Cape Coast</h3>
+                <h3>University of Cape Coast <span class="emoji">🎓</span></h3>
                 <p class="date">Software Developer (National Service) | 2023 – 2024</p>
                 <ul>
-                  <li>Developed and deployed web-based systems for the School of Pharmacy</li>
-                  <li>Built an online suggestion box using Spring Boot and Next.js</li>
-                  <li>Collaborated with stakeholders to gather requirements and implement solutions</li>
-                  <li>Assisted in managing and updating the school's website</li>
-                  <li>Designed promotional materials and fixed network and software problems</li>
+                  <li>Developed and deployed web-based systems for the School of Pharmacy <span class="emoji">💊</span></li>
+                  <li>Built an online suggestion box using Spring Boot and Next.js <span class="emoji">📝</span></li>
+                  <li>Collaborated with stakeholders to gather requirements and implement solutions <span class="emoji">🤝</span></li>
+                  <li>Assisted in managing and updating the school's website <span class="emoji">🌐</span></li>
+                  <li>Designed promotional materials and fixed network and software problems <span class="emoji">🔧</span></li>
                 </ul>
               </div>
             </div>
             
             <div class="timeline-item">
               <div class="timeline-content">
-                <h3>90 Degrees Security Services Limited</h3>
+                <h3>90 Degrees Security Services Limited <span class="emoji">🔒</span></h3>
                 <p class="date">Software Engineering Intern | 2022</p>
                 <ul>
-                  <li>Collaborated on building internal management tools</li>
-                  <li>Automated data workflows to improve efficiency</li>
-                  <li>Participated in code reviews and team meetings</li>
-                  <li>Created designs using Photoshop and developed templates</li>
-                  <li>Addressed technical issues with machines and gained experience with various digital tools</li>
+                  <li>Collaborated on building internal management tools <span class="emoji">🛠️</span></li>
+                  <li>Automated data workflows to improve efficiency <span class="emoji">⚡</span></li>
+                  <li>Participated in code reviews and team meetings <span class="emoji">👥</span></li>
+                  <li>Created designs using Photoshop and developed templates <span class="emoji">🎨</span></li>
+                  <li>Addressed technical issues with machines and gained experience with various digital tools <span class="emoji">💻</span></li>
                 </ul>
               </div>
             </div>
@@ -1478,7 +1552,7 @@
       <!-- Projects Section -->
       <section id="projects" class="projects">
         <div class="container">
-          <h2 class="section-title">Featured Projects</h2>
+          <h2 class="section-title">Featured Projects <span class="emoji">🚀</span></h2>
           <div class="projects-container">
             <div class="projects-scroll" id="projectsScroll">
               <div class="project-card">
@@ -1486,7 +1560,7 @@
                   <i class="fas fa-hotel fa-2x"></i>
                 </div>
                 <div class="project-content">
-                  <h3>Hotel Management System</h3>
+                  <h3>Hotel Management System <span class="emoji">🏨</span></h3>
                   <p>A comprehensive hotel management solution for room bookings, guest management, billing, and reporting.</p>
                   <div class="project-tech">
                     <span class="tech-tag">Spring Boot</span>
@@ -1506,7 +1580,7 @@
                   <i class="fas fa-shopping-cart fa-2x"></i>
                 </div>
                 <div class="project-content">
-                  <h3>AgriIdea Platform</h3>
+                  <h3>AgriIdea Platform <span class="emoji">🌱</span></h3>
                   <p>An e-commerce web platform for agricultural commerce in Ghana — enabling farmers to sell produce online.</p>
                   <div class="project-tech">
                     <span class="tech-tag">Next.js</span>
@@ -1526,7 +1600,7 @@
                   <i class="fas fa-comments fa-2x"></i>
                 </div>
                 <div class="project-content">
-                  <h3>SoPPS Online Suggestion Box</h3>
+                  <h3>SoPPS Online Suggestion Box <span class="emoji">💡</span></h3>
                   <p>A web-based feedback platform for students at UCC School of Pharmacy.</p>
                   <div class="project-tech">
                     <span class="tech-tag">Spring Boot</span>
@@ -1545,7 +1619,7 @@
                   <i class="fas fa-brain fa-2x"></i>
                 </div>
                 <div class="project-content">
-                  <h3>Harmony Haven App</h3>
+                  <h3>Harmony Haven App <span class="emoji">🧠</span></h3>
                   <p>Full-stack mental health application with AI integration, community features, and third-party authentication.</p>
                   <div class="project-tech">
                     <span class="tech-tag">Next.js</span>
@@ -1565,7 +1639,7 @@
                   <i class="fas fa-tasks fa-2x"></i>
                 </div>
                 <div class="project-content">
-                  <h3>Task Tracker App</h3>
+                  <h3>Task Tracker App <span class="emoji">✅</span></h3>
                   <p>A productivity application for tracking personal and team tasks.</p>
                   <div class="project-tech">
                     <span class="tech-tag">Next.js</span>
@@ -1583,7 +1657,7 @@
           
           <div class="view-all-container">
             <button class="btn btn-ghost" id="viewAllProjects">
-              <i class="fas fa-th-large"></i> View All Projects
+              <i class="fas fa-th-large"></i> View All Projects <span class="emoji">📂</span>
             </button>
           </div>
         </div>
@@ -1593,7 +1667,7 @@
       <div class="modal" id="projectsModal">
         <div class="modal-content">
           <div class="modal-header">
-            <h2>All Projects</h2>
+            <h2>All Projects <span class="emoji">🚀</span></h2>
             <button class="close-modal" id="closeModal">
               <i class="fas fa-times"></i>
             </button>
@@ -1609,11 +1683,11 @@
       <!-- Education Section -->
       <section id="education" class="education">
         <div class="container">
-          <h2 class="section-title">Education</h2>
+          <h2 class="section-title">Education <span class="emoji">🎓</span></h2>
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-content">
-                <h3>BSc. Computer Science</h3>
+                <h3>BSc. Computer Science <span class="emoji">💻</span></h3>
                 <p class="date">University of Cape Coast, Ghana | Graduated 2024</p>
                 <p>Relevant coursework: Software Engineering, Database Systems, Web Development, Artificial Intelligence</p>
               </div>
@@ -1622,21 +1696,32 @@
         </div>
       </section>
 
+      <!-- Testimonial Section -->
+      <section class="testimonials">
+        <div class="container">
+          <h2 class="section-title">What People Say <span class="emoji">💬</span></h2>
+          <div class="testimonial">
+            <p class="testimonial-text">"Elijah demonstrated exceptional problem-solving skills and technical expertise during his time with us. His ability to quickly grasp complex requirements and deliver high-quality solutions was impressive."</p>
+            <p class="testimonial-author">- Dr. Kwame Osei, University of Cape Coast</p>
+          </div>
+        </div>
+      </section>
+
       <!-- Research Section -->
       <section id="research" class="research">
         <div class="container">
-          <h2 class="section-title">Research & Interests</h2>
+          <h2 class="section-title">Research & Interests <span class="emoji">🔬</span></h2>
           <ul class="research-list">
             <li>
-              <h3>Impact of Artificial Intelligence on the Software Industry</h3>
+              <h3>Impact of Artificial Intelligence on the Software Industry <span class="emoji">🤖</span></h3>
               <p>Exploring how AI is transforming software development processes and the future role of developers.</p>
             </li>
             <li>
-              <h3>Health Information Systems and Telemedicine</h3>
+              <h3>Health Information Systems and Telemedicine <span class="emoji">🏥</span></h3>
               <p>Researching how technology can improve healthcare accessibility in developing regions.</p>
             </li>
             <li>
-              <h3>AI Integration in Agricultural Technology</h3>
+              <h3>AI Integration in Agricultural Technology <span class="emoji">🌾</span></h3>
               <p>Investigating how AI can optimize farming practices and increase agricultural productivity.</p>
             </li>
           </ul>
@@ -1646,28 +1731,28 @@
       <!-- Hobbies Section -->
       <section class="hobbies">
         <div class="container">
-          <h2 class="section-title">Beyond Coding</h2>
+          <h2 class="section-title">Beyond Coding <span class="emoji">🎉</span></h2>
           <div class="hobbies-content">
             <p>
               I enjoy reading literature, playing video games, and watching comedy series. 
-              I'm passionate about technology, innovation, and making a positive impact through software.
+              I'm passionate about technology, innovation, and making a positive impact through software. <span class="emoji">✨</span>
             </p>
             <div class="hobbies-icons">
               <div class="hobby-item">
                 <i class="fas fa-book"></i>
-                <span>Reading</span>
+                <span>Reading <span class="emoji">📚</span></span>
               </div>
               <div class="hobby-item">
                 <i class="fas fa-gamepad"></i>
-                <span>Gaming</span>
+                <span>Gaming <span class="emoji">🎮</span></span>
               </div>
               <div class="hobby-item">
                 <i class="fas fa-film"></i>
-                <span>Movies & Series</span>
+                <span>Movies & Series <span class="emoji">🎬</span></span>
               </div>
               <div class="hobby-item">
                 <i class="fas fa-lightbulb"></i>
-                <span>Innovation</span>
+                <span>Innovation <span class="emoji">💡</span></span>
               </div>
             </div>
           </div>
@@ -1680,7 +1765,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>About Me</h3>
+            <h3>About Me <span class="emoji">👨‍💻</span></h3>
             <p>Software Developer & Cloud Engineer passionate about creating innovative solutions and making a positive impact through technology.</p>
             <div class="footer-social">
               <a href="https://www.linkedin.com/in/elijah-mottey" target="_blank" aria-label="LinkedIn">
@@ -1696,7 +1781,7 @@
           </div>
           
           <div class="footer-section">
-            <h3>Quick Links</h3>
+            <h3>Quick Links <span class="emoji">🔗</span></h3>
             <div class="footer-links">
               <a href="#home">Home</a>
               <a href="#skills">Skills</a>
@@ -1708,16 +1793,16 @@
           </div>
           
           <div class="footer-section">
-            <h3>Contact Info</h3>
+            <h3>Contact Info <span class="emoji">📞</span></h3>
             <p><i class="fas fa-envelope"></i> elijahmottey5@gmail.com</p>
-            <p><i class="fas fa-map-marker-alt"></i> Ghana</p>
+            <p><i class="fas fa-map-marker-alt"></i> Ghana <span class="emoji">🇬🇭</span></p>
             <a href="https://drive.google.com/file/d/your-resume-link-here/view" download class="btn" style="margin-top: 10px;">Download CV</a>
           </div>
         </div>
         
         <div class="footer-bottom">
-          <p>&copy; 2025 Elijah Mottey. All rights reserved.</p>
-          <p>Designed and built with ❤️ by Elijah Mottey</p>
+          <p>&copy; 2025 Elijah Mottey. All rights reserved. <span class="emoji">✨</span></p>
+          <p>Designed and built with ❤️ by Elijah Mottey <span class="emoji">😊</span></p>
         </div>
       </div>
     </footer>
@@ -1944,21 +2029,17 @@
         }
       });
 
-      // Infinite horizontal scroll with blur effect
+      // Infinite horizontal scroll without blur effect
       const projectsScroll = document.getElementById('projectsScroll');
       const projectCards = document.querySelectorAll('.project-card');
-      
+
       // Initialize first card as active
       if (projectCards.length > 0) {
         projectCards[0].classList.add('active');
       }
-      
+
       // Update active card based on scroll position
       projectsScroll.addEventListener('scroll', () => {
-        const scrollLeft = projectsScroll.scrollLeft;
-        const scrollWidth = projectsScroll.scrollWidth;
-        const clientWidth = projectsScroll.clientWidth;
-        
         projectCards.forEach(card => {
           const cardRect = card.getBoundingClientRect();
           const containerRect = projectsScroll.getBoundingClientRect();
@@ -1969,13 +2050,12 @@
           const distance = Math.abs(cardCenter - containerCenter);
           const maxDistance = containerRect.width / 2;
           
-          // Update blur and opacity based on distance from center
-          const blurAmount = (distance / maxDistance) * 2;
+          // Update opacity and scale based on distance from center
           const opacityAmount = 1 - (distance / maxDistance) * 0.3;
+          const scaleAmount = 1 - (distance / maxDistance) * 0.05;
           
-          card.style.filter = `blur(${blurAmount}px)`;
           card.style.opacity = opacityAmount;
-          card.style.transform = `scale(${1 - (distance / maxDistance) * 0.05})`;
+          card.style.transform = `scale(${scaleAmount})`;
           
           // Set active class for center card
           if (distance < 100) {
